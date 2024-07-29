@@ -1,0 +1,14 @@
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\bin\Debug\Calculadora Cientifica.exe.config
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\bin\Debug\Calculadora Cientifica.exe
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\bin\Debug\Calculadora Cientifica.pdb
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\obj\Debug\Calculadora Cientifica.csproj.AssemblyReference.cache
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\obj\Debug\Calculadora_Cientifica.Form1.resources
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\obj\Debug\Calculadora_Cientifica.Properties.Resources.resources
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\obj\Debug\Calculadora Cientifica.csproj.GenerateResource.cache
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\obj\Debug\Calculadora Cientifica.csproj.CoreCompileInputs.cache
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\obj\Debug\Calculadora Cientifica.exe
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\obj\Debug\Calculadora Cientifica.pdb
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\bin\Debug\Antlr4.Runtime.Standard.dll
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\bin\Debug\NCalc.dll
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\bin\Debug\Antlr4.Runtime.Standard.xml
+C:\Users\Zabdiel A-g\source\repos\Calculadora Cientifica\Calculadora Cientifica\obj\Debug\Calculadora Cientifica.csproj.CopyComplete
