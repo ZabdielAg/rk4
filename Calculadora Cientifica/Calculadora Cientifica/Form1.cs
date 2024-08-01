@@ -16,8 +16,10 @@ namespace Calculadora_Cientifica
             InitializeComponent();
 
 
+
             pn_rk4.Enabled = false;
         }
+
 
         private double[] Solve(Func<double, double, double> f, double x0, double y0, double xEnd, double h, out string procedure)
         {
@@ -40,7 +42,7 @@ namespace Calculadora_Cientifica
                 x += h;
                 results[i] = y;
 
-                // Guardar el procedimiento si es necesario
+                
                 procedure += $"Paso {i} (x = {x:F1}): k1 = {k1:F6}, k2 = {k2:F6}, k3 = {k3:F6}, k4 = {k4:F6}, y = {y:F6}\n";
             }
 
@@ -61,150 +63,123 @@ namespace Calculadora_Cientifica
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Inicializar el ComboBox con las funciones
+            // Inicializador el ComboBox con las funciones
             comboBox_Functions.Items.Add("FN1");
             comboBox_Functions.Items.Add("FN2");
-            comboBox_Functions.SelectedIndex = 0; // Seleccionar FN1 por defecto
+            comboBox_Functions.SelectedIndex = 0; 
         }
 
-        private void n1_Click(object sender, EventArgs e)
+
+
+        //Aquí todos los botones que usarán: 
+        private void btn_n1_Click_1(object sender, EventArgs e)
         {
             txt_nums.Text += "1";
+
         }
 
-        private void n2_Click(object sender, EventArgs e)
+        private void btn_n2_Click(object sender, EventArgs e)
         {
             txt_nums.Text += "2";
         }
 
-        private void n3_Click(object sender, EventArgs e)
+
+        private void btn_n3_Click(object sender, EventArgs e)
         {
             txt_nums.Text += "3";
+
         }
 
-        private void btn_n4_Click(object sender, EventArgs e)
+        private void btn_n4__Click(object sender, EventArgs e)
         {
             txt_nums.Text += "4";
+
         }
 
-        private void btn_n5_Click(object sender, EventArgs e)
+        private void btn_n5__Click(object sender, EventArgs e)
         {
             txt_nums.Text += "5";
+
         }
 
-        private void btn_n6_Click(object sender, EventArgs e)
+        private void btn_n6__Click(object sender, EventArgs e)
         {
             txt_nums.Text += "6";
+
         }
 
-        private void btn_n7_Click(object sender, EventArgs e)
+        private void btn_n7__Click(object sender, EventArgs e)
         {
             txt_nums.Text += "7";
+
         }
 
-        private void btn_n8_Click(object sender, EventArgs e)
+        private void btn_n8__Click(object sender, EventArgs e)
         {
             txt_nums.Text += "8";
+
         }
 
-        private void bnt_n9_Click(object sender, EventArgs e)
+        private void btn_n9__Click(object sender, EventArgs e)
         {
             txt_nums.Text += "9";
+
         }
 
-        private void btn_n0_Click(object sender, EventArgs e)
+        private void btn_punto_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += ".";
+
+        }
+
+
+        private void btn_restas_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += "-";
+
+        }
+
+        private void btn_sumas_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += "+";
+
+        }
+
+        private void btn_x_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += "x";
+
+        }
+
+        private void btn_division_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += "÷";
+
+        }
+
+        private void btn_parentesisdere_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += ")";
+
+        }
+
+        private void btn_parentesisizq_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += "(";
+
+        }
+
+        private void btn_n0__Click(object sender, EventArgs e)
         {
             txt_nums.Text += "0";
         }
 
-        private void btn_suma_Click(object sender, EventArgs e)
-        {
-            txt_nums.Text += "+";
-        }
-
-        private void btn_multi_Click(object sender, EventArgs e)
-        {
-            txt_nums.Text += "*";
-        }
-
-        private void btn_div_Click(object sender, EventArgs e)
-        {
-            txt_nums.Text += "/";
-        }
-
-        private void btn_rest_Click(object sender, EventArgs e)
-        {
-            txt_nums.Text += "-";
-        }
-
-        private void bt_punto_Click(object sender, EventArgs e)
-        {
-            txt_nums.Text += ".";
-        }
-
-        private void btn_por10_Click(object sender, EventArgs e)
-        {
-            txt_nums.Text += "*10";
-        }
-
-        private void btn_Ans_Click(object sender, EventArgs e)
-        {
-            txt_nums.Text += lastResult.ToString();
-        }
-
-        private void btn_parenz_Click(object sender, EventArgs e)
-        {
-            txt_nums.Text += "(";
-        }
-
-        private void btn_parentD_Click(object sender, EventArgs e)
-        {
-            txt_nums.Text += ")";
-        }
-
-        private void btn_AC_Click(object sender, EventArgs e)
+        private void btn_ceros_Click(object sender, EventArgs e)
         {
             txt_nums.Text = string.Empty;
         }
 
-        private void btn_Xsobre2_Click(object sender, EventArgs e)
-        {
-            txt_nums.Text += "^";
-        }
-
-        private void btn_respuesta_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string expressionText = txt_nums.Text.Replace("x", "*").Replace("÷", "/");
-
-                // Usar NCalc para evaluar la expresión
-                Expression expression = new Expression(expressionText);
-
-                // Manejar el operador de potencia
-                expression.EvaluateFunction += (name, args) =>
-                {
-                    if (name == "pow")
-                    {
-                        args.Result = Math.Pow(Convert.ToDouble(args.Parameters[0].Evaluate()), Convert.ToDouble(args.Parameters[1].Evaluate()));
-                    }
-                };
-
-                // Reemplazar ^ por pow para que NCalc pueda evaluar la expresión
-                expressionText = expressionText.Replace("^", "pow(").Replace("(", ",").Replace(")", ")");
-
-                expression = new Expression(expressionText);
-                object result = expression.Evaluate();
-                txt_nums.Text = result.ToString();
-                lastResult = Convert.ToDouble(result);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en la expresión: " + ex.Message);
-            }
-        }
-
-        private void btn_del_Click(object sender, EventArgs e)
+        private void btn_deltodo_Click(object sender, EventArgs e)
         {
             if (txt_nums.Text.Length > 0)
             {
@@ -212,7 +187,158 @@ namespace Calculadora_Cientifica
             }
         }
 
-       
+        private void btn_Ans1_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += lastResult.ToString();
+
+        }
+
+        private void btn_e_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += "2.7182818284590452353602874713527";
+        }
+
+        private void btn_pi_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += "3.1415926535897932384626433832795";
+        }
+
+
+        private void btn_tan_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += "tan(";
+
+        }
+
+        private void btn_xsobre1_Click(object sender, EventArgs e)
+        {
+            txt_nums.Text += " ^";
+        }
+
+        private void btn_raizc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Calcula la raíz cuadrada del número en txt_nums
+                double resultado = Raiz(txt_nums.Text);
+                txt_nums.Text = resultado.ToString();
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Por favor, introduce un número válido.");
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        //Aquí hacemos publica la función donde el número que seleccionemos nos dara la raíz
+        public double Raiz(string numeroTexto)
+        {
+            // Intenta convertir el texto a un número
+            if (double.TryParse(numeroTexto, out double numero))
+            {
+                if (numero < 0)
+                {
+                    throw new ArgumentOutOfRangeException("El número no puede ser negativo.");
+                }
+
+                return Math.Sqrt(numero);
+            }
+            else
+            {
+                throw new FormatException("El texto ingresado no es un número válido.");
+            }
+        }
+
+
+
+
+        private void btn_igual_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Reemplaza operadores personalizados por los que entiende NCalc
+                string expressionText = txt_nums.Text.Replace("x", "*").Replace("÷", "/");
+
+                string[] parts = txt_nums.Text.Split('^');
+                if (parts.Length == 2)
+                {
+                    double baseNum = Convert.ToDouble(parts[0]);
+                    double exponent = Convert.ToDouble(parts[1]);
+                    double result = Math.Pow(baseNum, exponent);
+                    txt_nums.Text = result.ToString();
+                }
+
+                if (expressionText.Contains("+") || expressionText.Contains("*") || expressionText.Contains("/") || expressionText.Contains("-"))
+                {
+                    // Usar NCalc para evaluar la expresión
+                    Expression expression = new Expression(expressionText);
+
+                    // Evaluar la expresión
+                    object evalResult = expression.Evaluate();
+                    txt_nums.Text = evalResult.ToString();
+                    lastResult = Convert.ToDouble(evalResult);
+                }
+
+
+                // Detecta y maneja la función tan()
+                if (expressionText.Contains("tan("))
+                {
+                    expressionText = ProcessTanFunction(expressionText);
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la expresión: " + ex.Message);
+            }
+        }
+
+
+        private string ProcessTanFunction(string expression)
+        {
+            try
+            {
+                while (expression.Contains("tan("))
+                {
+                    // Encuentra la posición de la función tan(
+                    int startIndex = expression.IndexOf("tan(") + 4;
+                    int endIndex = expression.IndexOf(")", startIndex);
+
+                    if (endIndex > startIndex)
+                    {
+                        // Extrae el número dentro de la función tan()
+                        string numberStr = expression.Substring(startIndex, endIndex - startIndex);
+
+                        // Evalúa la expresión interna si es necesario
+                        Expression internalExpression = new Expression(numberStr);
+                        double number = Convert.ToDouble(internalExpression.Evaluate());
+
+                        // Calcula la tangente
+                        double result = Math.Tan(number);
+
+                        // Reemplaza la función completa con el resultado
+                        string fullFunction = $"tan({numberStr})";
+                        expression = expression.Replace(fullFunction, result.ToString());
+                    }
+                    else
+                    {
+                        throw new FormatException("Paréntesis de cierre faltante en tan().");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al procesar la función tan(): " + ex.Message);
+            }
+
+            return expression;
+        }
+
 
         private void txt_x0_MouseClick(object sender, MouseEventArgs e)
         {
@@ -233,6 +359,7 @@ namespace Calculadora_Cientifica
             {
                 button2.Visible = false;
                 pn_rk4.Enabled = true;
+                panel3.Visible = false;
                 btn_rk4act.Enabled = true;
                 modo1 = 1;
             }
@@ -292,5 +419,7 @@ namespace Calculadora_Cientifica
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+       
     }
 }
